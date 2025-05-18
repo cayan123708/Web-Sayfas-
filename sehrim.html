@@ -5,6 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Şehrim - Mehmet Çayan Çelebi</title>
   <style>
+
+/* Slider Stili */
+.slider {
+  width: 100%;
+  max-width: 800px;
+  margin: 30px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.slider {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  height: 400px; /* Resim boyutuna uygun yükseklik ayarla */
+  overflow: hidden;
+  position: relative;
+}
+.slider img {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -104,9 +130,80 @@
       padding: 30px;
       background-color: #eee;
       margin-top: 40px;
+
+.slider-container {
+  position:static;
+  max-width: 800px;
+  margin: 30px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.slider img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 24px;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+
+
+
+
     }
   </style>
 </head>
+
+<script>
+ let currentIndex = 0;
+
+function moveSlide(direction) {
+  const slides = document.querySelectorAll('.slider img'); // Doğrudan resimleri seçiyoruz
+  const totalSlides = slides.length;
+
+  currentIndex += direction;
+
+  if (currentIndex < 0) currentIndex = totalSlides - 1;
+  if (currentIndex >= totalSlides) currentIndex = 0;
+
+  // Tüm resimleri gizleyip, sadece ilgili olanı göstermek
+  slides.forEach((img, index) => {
+    img.style.display = index === currentIndex ? 'block' : 'none';
+  });
+}
+
+// **Sayfa ilk açıldığında sadece ilk resmi göster**
+document.addEventListener("DOMContentLoaded", () => {
+  moveSlide(0);
+});
+</script>
 <body>
 
   <nav>
@@ -119,10 +216,23 @@
     </ul>
   </nav>
 
-  <header>
-    <h1>Şehrim: Kars</h1>
-    <p>Doğu'nun tarihi ve doğal güzelliklerle bezeli kadim şehri</p>
-  </header>
+ <header>
+  <h1>Şehrim: Kars</h1>
+  <p>Doğu'nun tarihi ve doğal güzelliklerle bezeli kadim şehri</p>
+
+  <div class="slider-container">
+    <div class="slider" id="slider">
+      <img src="img/manzara1.jpeg" alt="Ani Harabeleri">
+      <img src="img/manzara2.jpeg" alt="Kars Kalesi">
+      <img src="img/manzara3.jpeg" alt="Kümbet Camii">
+      <img src="img/manzara4.jpeg" alt="Taşköprü">
+    </div>
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+  </div>
+</header>
+
+
 
   <section>
     <h2>Kars Hakkında</h2>
