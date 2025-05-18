@@ -6,7 +6,6 @@
   <title>Şehrim - Mehmet Çayan Çelebi</title>
   <style>
 
-/* Slider Stili */
 .slider {
   width: 100%;
   max-width: 800px;
@@ -20,7 +19,7 @@
   display: flex;
   width: 100%;
   max-width: 800px;
-  height: 400px; /* Resim boyutuna uygun yükseklik ayarla */
+  height: 400px;
   overflow: hidden;
   position: relative;
 }
@@ -28,8 +27,6 @@
   width: 100%;
   flex-shrink: 0;
 }
-
-
 
     body {
       margin: 0;
@@ -173,10 +170,6 @@
 .prev { left: 10px; }
 .next { right: 10px; }
 
-
-
-
-
     }
   </style>
 </head>
@@ -185,7 +178,7 @@
  let currentIndex = 0;
 
 function moveSlide(direction) {
-  const slides = document.querySelectorAll('.slider img'); // Doğrudan resimleri seçiyoruz
+  const slides = document.querySelectorAll('.slider img'); 
   const totalSlides = slides.length;
 
   currentIndex += direction;
@@ -193,13 +186,11 @@ function moveSlide(direction) {
   if (currentIndex < 0) currentIndex = totalSlides - 1;
   if (currentIndex >= totalSlides) currentIndex = 0;
 
-  // Tüm resimleri gizleyip, sadece ilgili olanı göstermek
   slides.forEach((img, index) => {
     img.style.display = index === currentIndex ? 'block' : 'none';
   });
 }
 
-// **Sayfa ilk açıldığında sadece ilk resmi göster**
 document.addEventListener("DOMContentLoaded", () => {
   moveSlide(0);
 });
@@ -232,8 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </header>
 
-
-
   <section>
     <h2>Kars Hakkında</h2>
 
@@ -249,7 +238,6 @@ document.addEventListener("DOMContentLoaded", () => {
       </p>
     </div>
 
-    <!-- Tarihi ve Kültürel Yerler -->
     <div class="card">
       <h3>Tarihi ve Kültürel Yerler</h3>
       <div class="grid">
@@ -281,7 +269,6 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     </div>
 
-    <!-- Doğal Güzellikler -->
     <div class="card">
       <h3>Doğal Güzellikler</h3>
       <div class="grid">
@@ -301,7 +288,6 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     </div>
 
-    <!-- Lezzetler -->
     <div class="card">
       <h3>Lezzetler</h3>
       <div class="grid">
@@ -317,16 +303,12 @@ document.addEventListener("DOMContentLoaded", () => {
           <img src="img/kaz eti.jpeg" alt="Kaz Eti">
           <p>Kars’a özgü geleneksel bir yemektir. Özellikle kışın tüketilir, fırında uzun sürede pişirilir.</p>
         </div>
-
       </div>
     </div>
-
   </section>
-
   <footer>
     <p>© 2025 Mehmet Çayan Çelebi</p>
   </footer>
-
 </body>
 </html>
 
