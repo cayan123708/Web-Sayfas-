@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Giriş Yap - Mehmet Çayan Çelebi</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #0aadff57;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 15px 0;
+    }
+
+    nav li {
+      margin: 0 25px;
+    }
+
+    nav a {
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 17px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #0056b3;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 150px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0aadff;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #007acc;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #817e7e;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Hakkımda</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="sehrim.html">Şehrim</a></li>
+      <li><a href="takimimiz.html">Takımımız</a></li>
+      <li><a href="ilgi alanlarim.html">İlgi Alanlarım</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+      <li><a href="login.html">login</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h2>Giriş Yap</h2>
+    <form id="loginForm" action="login.php" method="POST" onsubmit="return validateForm()">
+      <label>Kullanıcı Adı (Mail)</label>
+      <input type="text" name="username" id="username" placeholder="b2412100001@sakarya.edu.tr">
+      <label>Şifre</label>
+      <input type="password" name="password" id="password" placeholder="b2412100001">
+      <div class="error" id="errorMessage"></div>
+      <button type="submit">Giriş Yap</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>© 2025 Mehmet Çayan Çelebi</p>
+  </footer>
+
+  <script>
+    function validateForm() {
+      const email = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+      const error = document.getElementById("errorMessage");
+
+      if (!email || !pass) {
+        error.textContent = "Lütfen tüm alanları doldurunuz.";
+        return false;
+      }
+
+      const emailRegex = /^[a-z0-9._%+-]+@sakarya\.edu\.tr$/;
+      if (!emailRegex.test(email)) {
+        error.textContent = "Geçerli bir sakarya.edu.tr e-posta adresi giriniz.";
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+
+</body>
+</html>
