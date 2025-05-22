@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Form Sonucu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      padding: 30px;
+    }
+    .result {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="result">
+  <h2>Gönderilen Form Bilgileri</h2>
+  <div id="results"></div>
+</div>
+
+<script>
+  const data = JSON.parse(localStorage.getItem('formData'));
+  const output = document.getElementById('results');
+  if (data) {
+    output.innerHTML = `
+      <p><strong>Ad:</strong> ${data.ad}</p>
+      <p><strong>Soyad:</strong> ${data.soyad}</p>
+      <p><strong>Email:</strong> ${data.email}</p>
+      <p><strong>Telefon:</strong> ${data.telefon}</p>
+      <p><strong>Cinsiyet:</strong> ${data.cinsiyet}</p>
+      <p><strong>Mesaj:</strong> ${data.mesaj}</p>
+    `;
+  } else {
+    output.innerHTML = '<p>Gösterilecek form verisi bulunamadı.</p>';
+  }
+</script>
+
+</body>
+</html>
